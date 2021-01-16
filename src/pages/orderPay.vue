@@ -1,0 +1,23 @@
+<template>
+  <div>
+    orderPay
+  </div>
+</template>
+
+<script>
+export default {
+  name: "orderPay",
+  components: {},
+  props: {},
+  data() {
+    return {};
+  },
+  computed: {},
+  watch: {},
+  created() {},
+  mounted() {},
+  methods: {},
+};
+</script>
+
+<style scoped lang="less"></style>

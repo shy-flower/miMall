@@ -1,12 +1,12 @@
 <template>
   <div>
-    orderList
+    订单导航组件
   </div>
 </template>
 
 <script>
 export default {
-  name: "orderList",
+  name: "order-header",
   components: {},
   props: {},
   data() {

@@ -1,16 +1,18 @@
 <template>
   <div>
-    <nav-hearder></nav-hearder>
+    <order-header></order-header>
     <router-view></router-view>
     <nav-footer></nav-footer>
   </div>
 </template>
 
 <script>
-import NavFooter from "../components/NavFooter.vue";
+import OrderHeader from "@/components/OrderHeader.vue";
+import NavFooter from "@/components/NavFooter.vue";
+
 export default {
   name: "order",
-  components: { NavFooter },
+  components: { NavFooter, OrderHeader },
   props: {},
   data() {
     return {};

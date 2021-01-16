@@ -8,9 +8,10 @@
 
 <script>
 import NavFooter from "../components/NavFooter.vue";
+import NavHearder from "../components/NavHearder.vue";
 export default {
   name: "home",
-  components: { NavFooter },
+  components: { NavFooter, NavHearder },
   props: {},
   data() {
     return {};
