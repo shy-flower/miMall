@@ -9,9 +9,10 @@
 <script>
 import NavFooter from "../components/NavFooter.vue";
 import NavHearder from "../components/NavHearder.vue";
+import ServiceBar from "../components/ServiceBar.vue";
 export default {
   name: "home",
-  components: { NavFooter, NavHearder },
+  components: { NavFooter, NavHearder, ServiceBar },
   props: {},
   data() {
     return {};

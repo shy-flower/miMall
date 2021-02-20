@@ -1,0 +1,20 @@
+//flex居中
+@hov:space-between;
+@col:center;
+
+.flex(){
+display:flex;
+justify-content: @hov;
+align-items:@col;
+}
+.bgImg(@w,@h,@img,@size){
+    display: inline-block;
+    width: @w;
+    height: @h;
+    background: url(@img) no-repeat
+        center;
+        background-size:@size;
+        margin-right: 4px;
+
+}
+

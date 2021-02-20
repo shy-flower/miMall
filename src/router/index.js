@@ -10,7 +10,7 @@ import OrderConfirm from '@/pages/orderConfirm.vue'
 import OrderList from '@/pages/orderList.vue'
 import OrderPay from '@/pages/orderPay.vue'
 import AliPay from '@/pages/aliPay.vue'
-
+import Login from '@/pages/login.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -20,6 +20,7 @@ const routes = [
     {path:'/detail/:id',name:'detail',component:Detail},
   ]},
   {path:'/cart',name:'cart',component:Cart},
+  {path:'/login',name:'login',component:Login},
   {path:'/order',name:'order',component:Order ,children:[
     {path:'/confirm',name:'order-Confirm',component:OrderConfirm},
     {path:'/list',name:'order-List',component:OrderList},
@@ -33,5 +34,7 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+
+//挂载路由导航守卫
 
 export default router
