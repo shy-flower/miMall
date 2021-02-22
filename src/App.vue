@@ -40,7 +40,7 @@ import "@/css/config.less";
     },
     //购物车商品数据的总和
     getCartCount() {
-      this.axios.get("/carts/products/sum").then((res) => {
+      this.axios.get("/carts/products/sum").then((res = 0) => {
         //保存到vuex里面
         this.$store.dispatch("saveCartCount", res);
       });

@@ -31,7 +31,7 @@
       <!-- 右侧菜单 -->
       <div class="detailRight">
         <div class="title">
-          <h2>{{ detaList.name }}</h2>
+          <h1>{{ detaList.name }}</h1>
           <span
             >相机全新升级 / 960帧超慢动作 / 手持超级夜景 / 全球首款双频GPS /
             骁龙845处理器 / 红 外人脸解锁 / AI变焦双摄 / 三星 AMOLED 屏</span
@@ -122,6 +122,7 @@ export default {
   props: {},
   data() {
     return {
+      id: this.$route.params.id, //获取商品id
       color: 0, //选择颜色
       swiperOptions: {
         autoplay: 3000,
@@ -175,7 +176,16 @@ export default {
       this.color = id;
     },
     toCart() {
-      this.$router.push("/cart");
+      this.axios
+        .post("/carts", {
+          productId: this.id,
+          selected: true,
+        })
+        .then((res = { cartProductVoList: 0 }) => {
+          console.log(res);
+          this.$store.dispatch("saveCartCount", res.cartProductVoList.length);
+          this.$router.push("/cart");
+        });
     },
   },
 };
