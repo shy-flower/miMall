@@ -12,6 +12,7 @@
         <div class="topbar-user">
           <a href="javascript:;" v-if="username">{{ username }}</a>
           <a href="javascript:;" v-if="!username" @click="login">登录</a>
+          <a href="javascript:;" v-if="username" @click="outLogin()">退出</a>
           <a href="javascript:;" v-if="username">我的订单</a>
           <a href="javascript:;" v-if="!username">注册</a>
           <a href="javascript:;" @click="goToCart" class="my-cart">
@@ -181,6 +182,14 @@ export default {
     },
     goToCart() {
       this.$router.push("/cart");
+    },
+    //实现退出功能
+    outLogin() {
+      // 分析: 1.点击退出,出现登录字样,购物车数量清0
+      this.$store.dispatch("saveCartCount", 0); //清空购物车
+      this.$store.dispatch("saveUserName", ""); //登录状态设为未登录
+      this.$message.success("退出成功");
+      return;
     },
   },
 };

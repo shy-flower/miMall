@@ -176,6 +176,13 @@ export default {
       this.color = id;
     },
     toCart() {
+      let loginLenght = this.$store.state.username;
+      console.log(loginLenght.length);
+      if (loginLenght.length == 0) {
+        this.$router.replace("/login");
+        this.$message.info("请先登录账户");
+        return;
+      }
       this.axios
         .post("/carts", {
           productId: this.id,
@@ -183,7 +190,7 @@ export default {
         })
         .then((res = { cartProductVoList: 0 }) => {
           console.log(res);
-          this.$store.dispatch("saveCartCount", res.cartProductVoList.length);
+          this.$store.dispatch("saveCartCount", res.cartTotalQuantity);
           this.$router.push("/cart");
         });
     },

@@ -111,7 +111,7 @@
         <span slot="footer" class="dialog-footer">
           <div class="btn">
             <el-button type="primary" @click="Shopping_CartDialog = false">
-              <a href="javascript:;">查看购物车</a>
+              <a href="javascript:;" @click="toCart">查看购物车</a>
             </el-button>
           </div>
         </span>
@@ -196,16 +196,25 @@ export default {
     },
     /* 添加购物车 */
     addCart(id) {
-      this.axios.get("/carts").then((res) => {
-        if (res.fail != 10) {
-          this.Shopping_CartDialog = true;
-          this.$router.push("/#/cart", {
-            params: {
-              categoryId: id,
-            },
-          });
-        }
-      });
+      this.axios
+        .post("/carts", {
+          productId: id,
+          selected: true,
+        })
+        .then((res) => {
+          this.$store.dispatch("saveCartCount", res.cartTotalQuantity);
+          if (res.fail != 10) {
+            this.Shopping_CartDialog = true;
+            this.$router.push("/#/cart", {
+              params: {
+                categoryId: id,
+              },
+            });
+          }
+        });
+    },
+    toCart() {
+      this.$router.replace("/cart");
     },
   },
 };
@@ -472,4 +481,3 @@ export default {
   }
 }
 </style>
-<style></style>
