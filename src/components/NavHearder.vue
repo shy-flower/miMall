@@ -177,9 +177,7 @@ export default {
           pageSize: 6,
         },
       });
-      console.log(res.list);
       this.phoneList = res.list.slice(0, 6);
-      console.log(this.phoneList);
     },
     goToCart() {
       this.$router.push("/cart");
@@ -233,6 +231,7 @@ export default {
   text-align: center;
   display: flex;
   justify-content: center;
+  border-bottom: 1px solid #e5e5e5;
 
   .container {
     width: 1226px;

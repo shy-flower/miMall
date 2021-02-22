@@ -122,7 +122,6 @@ export default {
     ClickVideo() {
       this.videoDialogVisible = true;
     },
-      
   },
 };
 </script>
