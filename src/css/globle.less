@@ -8,7 +8,47 @@
 .el-button{
   padding: 0;
 }
-.el-dialog__header,
-.el-dialog__body{
-  padding: 0;
+// .el-dialog__header,
+// .el-dialog__body{
+//   padding: 0;
+// }
+.el-checkbox__inner {
+  width: 22px !important;
+  height: 22px !important;
+}
+.el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner{
+  background-color:#FF6600 !important;
+  border-color:#FF6600 !important;
+}
+.el-checkbox__inner::after{
+  width: 4px  !important;
+  height: 11px !important;
+  position: absolute;
+  left: 6px !important;
+}
+.el-table th>.cell{
+  color: #999;
+  font: 16px 宋体;
+}
+.el-table .cell{
+  font-size: 18px;
+  color:#333;
+}
+.el-dialog__footer {
+  text-align: center;
+  width: 700px;
+}
+.el-dialog__header,.el-dialog__body {
+  width: 660px;
+}
+
+
+
+.el-icon-close:before {
+  content: "\e6db";
+  position: relative;
+  left: 250px;
+}
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  background-color: #ff6600 !important;
 }

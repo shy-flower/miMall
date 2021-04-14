@@ -9,10 +9,16 @@ module.exports = {
         changeOrigin:true,
         pathRewrite:{
           '/api':''
-        }
+        },
+        publicPath:'/app'
+
       }
     }
 
 
+  },
+  chainWebpack:(config)=>{
+    config.plugins.delete('prefetch')
   }
+
 }

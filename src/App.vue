@@ -21,8 +21,10 @@ import "@/css/config.less";
   watch: {},
   created() {},
   mounted() {
-    this.getUser();
-    this.getCartCount();
+    if (this.$cookie.get("userId")) {
+      this.getUser();
+      this.getCartCount();
+    }
     /*  this.axios.get("/mock/user/login.json").then((res) => {
       this.res = res;
     }); */

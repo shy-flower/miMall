@@ -232,9 +232,4 @@ export default {
     margin-top: 27px;
   }
 }
-/* 清除对话框默认样式 */
-.el-dialog__header,
-.el-dialog__body {
-  padding: 0 !important;
-}
 </style>

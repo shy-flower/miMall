@@ -13,7 +13,7 @@
           <a href="javascript:;" v-if="username">{{ username }}</a>
           <a href="javascript:;" v-if="!username" @click="login">登录</a>
           <a href="javascript:;" v-if="username" @click="outLogin()">退出</a>
-          <a href="javascript:;" v-if="username">我的订单</a>
+          <a href="javascript:;" v-if="username" @click="goOrder()">我的订单</a>
           <a href="javascript:;" v-if="!username">注册</a>
           <a href="javascript:;" @click="goToCart" class="my-cart">
             <span class="icon-cart"></span>
@@ -164,6 +164,10 @@ export default {
   watch: {},
   created() {
     this.getProductList();
+    let params = this.$route.params;
+    if (params && params.from == "login") {
+      this.getCartCount();
+    }
   },
   mounted() {},
   methods: {
@@ -186,10 +190,25 @@ export default {
     //实现退出功能
     outLogin() {
       // 分析: 1.点击退出,出现登录字样,购物车数量清0
+      this.axios.post("/user/logout").then(() => {
+        this.$message.success("退出成功!");
+      });
+      this.$cookie.set("userId", "", { expires: "-1" });
       this.$store.dispatch("saveCartCount", 0); //清空购物车
-      this.$store.dispatch("saveUserName", ""); //登录状态设为未登录
+      this.$store.dispatch("saveUserName", ""); //登录状态名设为未登录
       this.$message.success("退出成功");
+
       return;
+    },
+    //购物车商品数据的总和
+    getCartCount() {
+      this.axios.get("/carts/products/sum").then((res = 0) => {
+        //保存到vuex里面
+        this.$store.dispatch("saveCartCount", res);
+      });
+    },
+    goOrder() {
+      this.$router.push("/order/list");
     },
   },
 };

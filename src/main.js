@@ -46,13 +46,19 @@ axios.interceptors.response.use(function(response){
     if(path !='#/index'){
       window.location.href = '#/login'
       return Promise.reject(res)
-
     }
+    return Promise.reject(res)
   }else{
     alert(res.msg)
     return Promise.reject(res)
   }
-})
+},(error)=>{
+  let res =error.response
+  this.$message.error(res.data.message)
+  return Promise.reject(res)
+
+}
+)
 
 
 
